@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 from typing import List, Optional
 
+from . import generate as generation
 from . import guards
 from .corpus import load_chunks, load_meta, load_schemes, load_sources
 from .retrieval import BaseRetriever, get_retriever
@@ -47,6 +48,12 @@ class Answer:
     chunk_id: Optional[str] = None
     score: Optional[float] = None
     followup: Optional[str] = None
+    #: True when an LLM phrased this answer instead of the corpus sentence
+    #: being returned verbatim. False whenever generation is off (the
+    #: default), when it failed, or when its output did not pass the
+    #: grounding check in ppfaq/generate.py. The citation is attached from
+    #: the retrieved chunk either way.
+    generated: bool = False
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -135,12 +142,23 @@ class Assistant:
             others = ", ".join(self.schemes[c].name for c in detected[1:])
             followup = f"Ask the same question for {others} to see its figure."
 
+        # Optional generation. The model is handed the chunk's own sentence and
+        # nothing else, and it returns prose only - the citation below is taken
+        # from the chunk regardless, so it cannot drift. Anything that fails the
+        # grounding check falls back to the stored sentence silently.
+        text, generated = top.chunk.answer, False
+        if generation.available():
+            phrased = generation.generate(question, top.chunk.answer)
+            if phrased is not None:
+                text, generated = phrased.text, True
+
         return Answer(
-            text=top.chunk.answer,
+            text=text,
             source_title=top.chunk.source_title,
             source_url=top.chunk.source_url,
             as_on=top.chunk.as_on,
             kind="fact",
+            generated=generated,
             scheme=top.chunk.scheme,
             topic=top.chunk.topic,
             chunk_id=top.chunk.id,

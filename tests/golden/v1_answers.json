@@ -10,7 +10,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Did it beat the benchmark?",
@@ -23,7 +24,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "ELSS tax saver expense ratio",
@@ -36,7 +38,8 @@
     "topic": "expense_ratio",
     "chunk_id": "C02",
     "score": 0.7403,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Exit load on Parag Parikh Liquid Fund?",
@@ -49,7 +52,8 @@
     "topic": "exit_load",
     "chunk_id": "C14",
     "score": 0.5979,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "How do I download my capital gains statement?",
@@ -62,7 +66,8 @@
     "topic": "capital_gains_statement",
     "chunk_id": "C100",
     "score": 0.653,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "How much should I invest in this?",
@@ -75,7 +80,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Is the ELSS fund a good investment?",
@@ -88,7 +94,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Minimum SIP amount for the flexi cap fund",
@@ -101,7 +108,8 @@
     "topic": "min_sip",
     "chunk_id": "C40",
     "score": 0.9431,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "My PAN is ABCDE1234F, what is my exit load?",
@@ -114,7 +122,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "My aadhaar is 1234 5678 9012",
@@ -127,7 +136,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Riskometer of Parag Parikh Conservative Hybrid Fund",
@@ -140,7 +150,8 @@
     "topic": "riskometer",
     "chunk_id": "C52",
     "score": 0.9097,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Should I buy Parag Parikh Flexi Cap Fund?",
@@ -153,7 +164,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "TER of PPFCF",
@@ -166,7 +178,8 @@
     "topic": "expense_ratio",
     "chunk_id": "C01",
     "score": 0.6357,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What is the CAGR of the liquid fund?",
@@ -179,7 +192,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What is the benchmark of the flexi cap fund?",
@@ -192,7 +206,8 @@
     "topic": "benchmark",
     "chunk_id": "C60",
     "score": 0.7602,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What is the capital of France?",
@@ -205,7 +220,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What is the expense ratio of Parag Parikh Flexi Cap Fund?",
@@ -218,7 +234,8 @@
     "topic": "expense_ratio",
     "chunk_id": "C01",
     "score": 0.7513,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What is the lock-in for the ELSS fund?",
@@ -231,7 +248,8 @@
     "topic": "lock_in",
     "chunk_id": "C20",
     "score": 0.6236,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "What were the 5 year returns of the flexi cap fund?",
@@ -244,7 +262,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "Which is better, flexi cap or ELSS?",
@@ -257,7 +276,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "compare expense ratio of flexi cap and elss",
@@ -270,7 +290,8 @@
     "topic": "expense_ratio",
     "chunk_id": "C01",
     "score": 0.5841,
-    "followup": "Ask the same question for Parag Parikh ELSS Tax Saver Fund to see its figure."
+    "followup": "Ask the same question for Parag Parikh ELSS Tax Saver Fund to see its figure.",
+    "generated": false
   },
   {
     "question": "daily NAV of flexi cap",
@@ -283,7 +304,8 @@
     "topic": "nav",
     "chunk_id": "C107",
     "score": 0.5192,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "email me at someone@example.com",
@@ -296,7 +318,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "entry load?",
@@ -309,7 +332,8 @@
     "topic": "entry_load",
     "chunk_id": "C106",
     "score": 0.4175,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "exit load flexi cap",
@@ -322,7 +346,8 @@
     "topic": "exit_load",
     "chunk_id": "C10",
     "score": 0.5653,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "expense ratio",
@@ -335,7 +360,8 @@
     "topic": "expense_ratio",
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "expense ratio of the HDFC Small Cap Fund",
@@ -348,7 +374,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "folio number 12345678",
@@ -361,7 +388,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "how do I get my account statement",
@@ -374,7 +402,8 @@
     "topic": "account_statement",
     "chunk_id": "C101",
     "score": 0.5879,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "how risky is the flexi cap fund",
@@ -387,7 +416,8 @@
     "topic": "riskometer",
     "chunk_id": "C50",
     "score": 0.4981,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "is the liquid fund safe for me",
@@ -400,7 +430,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "lock-in for the ICICI ELSS fund",
@@ -413,7 +444,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "min sip",
@@ -426,7 +458,8 @@
     "topic": "min_sip",
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "my folio number is 12345678",
@@ -439,7 +472,8 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "plans available in PPFAS funds",
@@ -452,7 +486,8 @@
     "topic": "plans",
     "chunk_id": "C95",
     "score": 0.2917,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "smallest SIP in the ELSS fund",
@@ -465,7 +500,8 @@
     "topic": "min_sip",
     "chunk_id": "C41",
     "score": 0.8237,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "tell me the AUM",
@@ -478,7 +514,8 @@
     "topic": "aum",
     "chunk_id": "C108",
     "score": 0.4971,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "what is the exit load",
@@ -491,7 +528,8 @@
     "topic": "exit_load",
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "what schemes do you cover",
@@ -504,7 +542,8 @@
     "topic": "scheme_list",
     "chunk_id": "C105",
     "score": 0.3225,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "when was the liquid fund launched",
@@ -517,7 +556,8 @@
     "topic": "inception",
     "chunk_id": "C84",
     "score": 0.8384,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "where can I find the SID",
@@ -530,7 +570,8 @@
     "topic": "documents",
     "chunk_id": "C102",
     "score": 0.2463,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "which index does PPCHF track",
@@ -543,7 +584,8 @@
     "topic": "benchmark",
     "chunk_id": "C62",
     "score": 0.5882,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "who manages the flexi cap fund",
@@ -556,7 +598,8 @@
     "topic": "fund_managers",
     "chunk_id": "C90",
     "score": 0.4583,
-    "followup": null
+    "followup": null,
+    "generated": false
   },
   {
     "question": "who won the world cup",
@@ -569,6 +612,7 @@
     "topic": null,
     "chunk_id": null,
     "score": null,
-    "followup": null
+    "followup": null,
+    "generated": false
   }
 ]
