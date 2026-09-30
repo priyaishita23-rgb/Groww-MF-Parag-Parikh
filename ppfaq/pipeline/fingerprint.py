@@ -40,13 +40,21 @@ CORPUS_FILES = ["corpus.json", "schemes.json", "sources.csv"]
 
 
 def _sha256(paths: List[str]) -> str:
+    """Hash file contents, normalised so line endings cannot change the result.
+
+    Hashing raw bytes looked right and was wrong. Git rewrites line endings on
+    checkout, so cloning this repo on Windows turns every LF into CRLF, the
+    digest changes, and a correct store is rejected as stale before the first
+    question is asked. The corpus is identical either way; the bytes are not.
+    CRLF and a lone CR both collapse to LF before hashing.
+    """
     digest = hashlib.sha256()
     for path in paths:
         # Hash the name too, so reordering or renaming is visible.
         digest.update(os.path.basename(path).encode("utf-8"))
         with open(path, "rb") as fh:
-            for block in iter(lambda: fh.read(65536), b""):
-                digest.update(block)
+            content = fh.read()
+        digest.update(content.replace(b"\r\n", b"\n").replace(b"\r", b"\n"))
     return digest.hexdigest()
 
 

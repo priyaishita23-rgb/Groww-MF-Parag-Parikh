@@ -202,6 +202,26 @@ class Fingerprints(unittest.TestCase):
             with open(self.fp.MANIFEST, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(original)
 
+    def test_hash_ignores_line_endings(self):
+        """A CRLF checkout must not invalidate a good vector store.
+
+        Git rewrites line endings on checkout, so hashing raw bytes meant a
+        fresh clone on Windows rejected a perfectly valid store as stale. The
+        corpus is identical either way; only the bytes differ.
+        """
+        import tempfile
+        lf = b"line one\nline two\n"
+        crlf = b"line one\r\nline two\r\n"
+        digests = []
+        for content in (lf, crlf):
+            directory = tempfile.mkdtemp()
+            path = os.path.join(directory, "same.json")
+            with open(path, "wb") as fh:
+                fh.write(content)
+            digests.append(self.fp._sha256([path]))
+        self.assertEqual(digests[0], digests[1],
+                         msg="line endings changed the fingerprint")
+
     def test_manifest_records_the_embedding_model(self):
         from ppfaq import config
         manifest = self.fp.read_manifest()

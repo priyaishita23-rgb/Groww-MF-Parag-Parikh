@@ -1,0 +1,23 @@
+# Keep line endings stable across platforms.
+#
+# Without this, git rewrites LF to CRLF when checking out on Windows. That is
+# usually harmless, but here the corpus files are hashed to detect a stale
+# vector store: rewritten bytes mean a different digest, and a perfectly good
+# store gets rejected as stale on a fresh clone. The hash normalises line
+# endings too (ppfaq/pipeline/fingerprint.py), so this is the second of two
+# defences rather than the only one.
+
+* text=auto eol=lf
+
+# Data and generated artefacts: never touched, so hashes stay reproducible.
+corpus/*.json   text eol=lf
+corpus/*.csv    text eol=lf
+chunks/*.jsonl  text eol=lf
+chunks/*.json   text eol=lf
+chunks/*.txt    text eol=lf
+tests/golden/*.json text eol=lf
+
+# Binary, leave alone.
+*.png binary
+*.pdf binary
+*.bin binary
