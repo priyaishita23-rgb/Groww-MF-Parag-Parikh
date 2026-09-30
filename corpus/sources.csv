@@ -1,0 +1,25 @@
+id,publisher,title,url,doc_type,used_for
+S01,PPFAS AMC,Parag Parikh Flexi Cap Fund - scheme page,https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/,Scheme page,"Category, inception, minimums, exit load, riskometer, fund managers"
+S02,PPFAS AMC,Parag Parikh ELSS Tax Saver Fund - scheme page,https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/,Scheme page,"Category, lock-in, riskometer, inception"
+S03,PPFAS AMC,Parag Parikh Conservative Hybrid Fund - scheme page,https://amc.ppfas.com/schemes/parag-parikh-conservative-hybrid-fund/,Scheme page,"Category, riskometer"
+S04,PPFAS AMC,Parag Parikh Dynamic Asset Allocation Fund - scheme page,https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/,Scheme page,"Category, benchmark, minimums, exit load, riskometer"
+S05,PPFAS AMC,Parag Parikh Liquid Fund - scheme page,https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/,Scheme page,"Category, minimums, graded exit load, riskometer"
+S06,PPFAS AMC,All schemes index,https://amc.ppfas.com/schemes/,Scheme index,Scheme list and categories
+S07,PPFAS AMC,Monthly Factsheet - August 2026,https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf,Factsheet (PDF),"Base expense ratio, benchmark, inception, minimums, exit load, fund managers"
+S08,PPFAS AMC,Factsheet archive,https://amc.ppfas.com/downloads/factsheet/,Document index,Where to find the latest monthly factsheet
+S09,PPFAS AMC,Total Expense Ratio (TER) disclosures,https://amc.ppfas.com/statutory-disclosures/total-expense-ratio-TER/,Statutory disclosure,Current daily/monthly TER of every scheme
+S10,PPFAS AMC,KIM - Parag Parikh ELSS Tax Saver Fund,https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf,KIM (PDF),"ELSS 3-year lock-in, entry/exit load nil, minimum application and SIP amounts"
+S11,PPFAS AMC,KIM & SID - Parag Parikh Flexi Cap Fund,https://amc.ppfas.com/downloads/parag-parikh-flexi-cap-fund/KIM_PPFCF.pdf,KIM (PDF),Flexi Cap load structure and minimums
+S12,PPFAS AMC,SID - Parag Parikh Flexi Cap Fund,https://amc.ppfas.com/downloads/parag-parikh-flexi-cap-fund/SID_PPFCF.pdf,SID (PDF),Scheme Information Document
+S13,PPFAS AMC,KIM - Parag Parikh Conservative Hybrid Fund,https://amc.ppfas.com/downloads/parag-parikh-conservative-hybrid-fund/kim-parag-parikh-conservative-hybrid-fund.pdf,KIM (PDF),CHF load structure and minimums
+S14,PPFAS AMC,KIM - Parag Parikh Dynamic Asset Allocation Fund,https://amc.ppfas.com/downloads/parag-parikh-dynamic-asset-allocation-fund/kim-parag-parikh-dynamic-asset-allocation-fund.pdf,KIM (PDF),DAAF load structure and minimums
+S15,PPFAS AMC,KIM - Parag Parikh Liquid Fund,https://amc.ppfas.com/downloads/parag-parikh-liquid-fund/kim-parag-parikh-liquid-fund.pdf,KIM (PDF),Liquid Fund graded exit load
+S16,PPFAS AMC,KIM / SID / SAI document index,https://amc.ppfas.com/downloads/kim-sid-and-sai/,Document index,Where to download KIM SID SAI for every scheme
+S17,PPFAS AMC,Statement of Additional Information (SAI),https://amc.ppfas.com/downloads/SAI.pdf,SAI (PDF),Fund-level statutory information
+S18,PPFAS AMC,Investor Desk - request statements,https://amc.ppfas.com/investor-desk/,Investor services,"Account statement, capital gain/loss statement, exit load statement"
+S19,PPFAS AMC,Account statement via missed call,https://amc.ppfas.com/investor-desk/statement-via-missed-call/,Investor services,Alternate way to get an account statement
+S20,PPFAS AMC,Notices and addenda,https://amc.ppfas.com/downloads/addendum/,Statutory notices,Changes to load structure / scheme features
+S21,PPFAS AMC,Entry and exit loads - Parag Parikh ELSS Tax Saver Fund,https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/entry-exit-load,Scheme page,ELSS entry and exit load
+S22,AMFI,Risk-o-meter,https://www.amfiindia.com/online-center/risk-o-meter,Regulator/industry body,What the riskometer levels mean and how often they are updated
+S23,AMFI,Risks in mutual funds (knowledge centre),https://www.amfiindia.com/investor/knowledge-center-info?zoneName=riskInMutualFunds,Regulator/industry body,Educational page used in facts-only refusals
+S24,SEBI,Mutual funds - SEBI intermediaries,https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=13,Regulator,Registered mutual funds list

@@ -1,0 +1,13 @@
+# v1 — the default runtime and the class demo path.
+#
+# There is nothing to install. The assistant, the HTTP server, the CLI and the
+# test suite run on the Python 3.9+ standard library alone, which is what keeps
+# the demo installable-free and runnable with no network.
+#
+#     python app.py
+#     python -m ppfaq.cli "What is the exit load on Parag Parikh Liquid Fund?"
+#     python -m unittest discover -s tests -v
+#
+# The v2 embedding pipeline (MiniLM + ChromaDB) does have dependencies; they are
+# kept out of this file deliberately so that installing them stays opt-in.
+# See requirements-v2.txt and IMPLEMENTATION.md.

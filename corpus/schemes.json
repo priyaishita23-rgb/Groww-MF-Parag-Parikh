@@ -1,0 +1,13 @@
+{
+  "amc": "PPFAS Mutual Fund (PPFAS Asset Management Pvt. Ltd.)",
+  "distribution_context": "Groww (retail investment app) - facts sourced only from the AMC/SEBI/AMFI public pages listed in corpus/sources.csv",
+  "corpus_last_updated": "2026-09-29",
+  "factsheet_as_on": "August 31, 2026",
+  "schemes": [
+    {"code": "PPFCF", "name": "Parag Parikh Flexi Cap Fund", "aliases": ["flexi cap", "flexicap", "ppfcf", "flexi", "parag parikh flexi cap"]},
+    {"code": "PPTSF", "name": "Parag Parikh ELSS Tax Saver Fund", "aliases": ["elss", "tax saver", "taxsaver", "pptsf", "80c", "tax saving"]},
+    {"code": "PPCHF", "name": "Parag Parikh Conservative Hybrid Fund", "aliases": ["conservative hybrid", "ppchf", "conservative"]},
+    {"code": "PPDAAF", "name": "Parag Parikh Dynamic Asset Allocation Fund", "aliases": ["dynamic asset allocation", "ppdaaf", "daaf", "balanced advantage", "dynamic"]},
+    {"code": "PPLF", "name": "Parag Parikh Liquid Fund", "aliases": ["liquid", "pplf", "liquid fund"]}
+  ]
+}

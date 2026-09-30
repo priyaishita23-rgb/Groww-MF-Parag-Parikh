@@ -1,0 +1,6 @@
+scratch/
+__pycache__/
+*.pyc
+
+# v2: derived index, rebuilt by scripts/ingest.py — never the source of truth
+vectorstore/

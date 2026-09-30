@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MF Facts Desk</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#fff; --border:#e2e0db; --text:#1c1b19; --muted:#6b6863;
+    --accent:#0b6b4f; --accent-soft:#e8f2ee; --warn:#8a5a1b; --warn-soft:#fbf1e2;
+    --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17181a; --surface:#1f2124; --border:#33363b; --text:#ecebe8; --muted:#9a9791;
+      --accent:#5fc2a0; --accent-soft:#172b25; --warn:#e0b070; --warn-soft:#2c2419;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17181a; --surface:#1f2124; --border:#33363b; --text:#ecebe8; --muted:#9a9791;
+    --accent:#5fc2a0; --accent-soft:#172b25; --warn:#e0b070; --warn-soft:#2c2419;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:28px 16px 48px}
+  header h1{font-size:1.35rem; margin:0 0 4px; letter-spacing:-.01em}
+  header p.sub{margin:0; color:var(--muted); font-size:.92rem}
+  .disclaimer{
+    margin:16px 0 20px; padding:10px 13px; border-radius:var(--radius);
+    background:var(--warn-soft); border:1px solid var(--border); color:var(--warn);
+    font-size:.85rem;
+  }
+  .examples{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px}
+  .examples button{
+    font:inherit; font-size:.85rem; cursor:pointer; color:var(--text);
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:999px; padding:7px 13px;
+  }
+  .examples button:hover{border-color:var(--accent); color:var(--accent)}
+  #log{display:flex; flex-direction:column; gap:12px; margin-bottom:18px}
+  .msg{padding:13px 15px; border-radius:var(--radius); border:1px solid var(--border)}
+  .msg.you{background:var(--accent-soft); border-color:transparent; align-self:flex-end; max-width:85%}
+  .msg.bot{background:var(--surface)}
+  .msg .body{margin:0}
+  .msg .followup{margin:8px 0 0; font-size:.88rem; color:var(--muted)}
+  .meta{margin-top:10px; padding-top:9px; border-top:1px solid var(--border); font-size:.8rem; color:var(--muted)}
+  .meta a{color:var(--accent); word-break:break-word}
+  .tag{
+    display:inline-block; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    padding:2px 7px; border-radius:5px; background:var(--accent-soft); color:var(--accent);
+    margin-bottom:7px; font-weight:600;
+  }
+  .tag.refusal{background:var(--warn-soft); color:var(--warn)}
+  form{display:flex; gap:8px; position:sticky; bottom:0; padding:10px 0; background:var(--bg)}
+  input[type=text]{
+    flex:1; font:inherit; padding:11px 13px; color:var(--text);
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  }
+  input[type=text]:focus{outline:2px solid var(--accent); outline-offset:-1px}
+  button.send{
+    font:inherit; font-weight:600; cursor:pointer; padding:11px 19px;
+    border:0; border-radius:var(--radius); background:var(--accent); color:#fff;
+  }
+  footer{margin-top:24px; font-size:.78rem; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MF Facts Desk &middot; PPFAS schemes</h1>
+    <p class="sub" id="welcome">Loading&hellip;</p>
+  </header>
+
+  <p class="disclaimer" id="disclaimer"></p>
+
+  <div class="examples" id="examples"></div>
+
+  <div id="log" aria-live="polite"></div>
+
+  <form id="form" autocomplete="off">
+    <input type="text" id="q" placeholder="e.g. Exit load on the Liquid Fund?" aria-label="Your question">
+    <button class="send" type="submit">Ask</button>
+  </form>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const log = document.getElementById('log');
+
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+function addYou(text){
+  const m = el('div','msg you');
+  m.appendChild(el('p','body', text));
+  log.appendChild(m);
+  m.scrollIntoView({behavior:'smooth', block:'end'});
+}
+
+function addBot(a){
+  const m = el('div','msg bot');
+  const refusal = a.kind && a.kind.indexOf('refusal') === 0;
+  const label = refusal ? a.kind.split(':')[1] + ' - not answered'
+              : a.kind === 'no_answer' ? 'out of scope'
+              : (a.topic || 'fact').replace(/_/g,' ');
+  const tag = el('span', 'tag' + (refusal || a.kind === 'no_answer' ? ' refusal' : ''), label);
+  m.appendChild(tag);
+  m.appendChild(el('p','body', a.text));
+  if (a.followup) m.appendChild(el('p','followup', a.followup));
+
+  const meta = el('div','meta');
+  if (a.as_on) meta.appendChild(el('div', null, 'Last updated from sources: ' + a.as_on));
+  const line = el('div');
+  line.appendChild(document.createTextNode('Source: '));
+  const link = el('a', null, a.source_title);
+  link.href = a.source_url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+  line.appendChild(link);
+  meta.appendChild(line);
+  m.appendChild(meta);
+
+  log.appendChild(m);
+  m.scrollIntoView({behavior:'smooth', block:'end'});
+}
+
+async function ask(question){
+  if (!question.trim()) return;
+  addYou(question);
+  document.getElementById('q').value = '';
+  try{
+    const res = await fetch('/api/ask', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({question})
+    });
+    addBot(await res.json());
+  }catch(e){
+    addBot({text:'Could not reach the assistant. Is the server still running?',
+            source_title:'PPFAS - Schemes', source_url:'https://amc.ppfas.com/schemes/',
+            kind:'no_answer'});
+  }
+}
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  ask(document.getElementById('q').value);
+});
+
+fetch('/api/meta').then(r => r.json()).then(meta => {
+  document.getElementById('welcome').textContent = meta.welcome;
+  document.getElementById('disclaimer').textContent = meta.disclaimer;
+  const box = document.getElementById('examples');
+  meta.examples.forEach(x => {
+    const b = el('button', null, x);
+    b.type = 'button';
+    b.addEventListener('click', () => ask(x));
+    box.appendChild(b);
+  });
+  document.getElementById('footer').textContent =
+    'Covers: ' + meta.schemes.join(' · ') + '. Corpus last refreshed ' + meta.corpus_last_updated + '.';
+});
+</script>
+</body>
+</html>
