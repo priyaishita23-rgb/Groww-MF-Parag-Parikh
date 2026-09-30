@@ -4,3 +4,9 @@ __pycache__/
 
 # v2: derived index, rebuilt by scripts/ingest.py — never the source of truth
 vectorstore/
+
+# Secrets. .env holds real keys and must never be committed; .env.example is
+# the committed template and holds placeholders only.
+.env
+.env.*
+!.env.example
