@@ -1,0 +1,88 @@
+==============================================================================
+RAG STAGE 1 - LOAD
+==============================================================================
+AMC                 PPFAS Mutual Fund (PPFAS Asset Management Pvt. Ltd.)
+Corpus last updated 2026-09-29
+Factsheet as on     August 31, 2026
+Documents loaded    55
+Schemes             5
+Topics              22
+Sources registered  24
+
+FACTS BY SCHEME AND TOPIC
+                            PPFCF   PPTSF   PPCHF  PPDAAF    PPLF     ALL
+account_statement                                                       x
+addendum                                                                x
+aum                                                                     x
+benchmark                       x       x       x       x       x        
+capital_gains_statement                                                 x
+category                        x       x       x       x       x        
+documents                                                               x
+entry_load                                                              x
+exit_load                       x       x       x       x       x        
+expense_ratio                   x       x       x       x       x        
+factsheet                                                               x
+fund_managers                   x                               x        
+inception                       x       x       x       x       x        
+lock_in                                 x                                
+min_investment                  x       x       x       x       x        
+min_sip                         x       x       x       x       x        
+nav                                                                     x
+plans                                                                   x
+riskometer                      x       x       x       x       x        
+riskometer_explainer                                                    x
+scheme_list                                                             x
+ter_where                                                               x
+
+SOURCE REGISTER  (facts citing each source)
+  S01    4  PPFAS AMC - Parag Parikh Flexi Cap Fund - scheme page
+            https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/
+  S02    1  PPFAS AMC - Parag Parikh ELSS Tax Saver Fund - scheme page
+            https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/
+  S03    2  PPFAS AMC - Parag Parikh Conservative Hybrid Fund - scheme page
+            https://amc.ppfas.com/schemes/parag-parikh-conservative-hybrid-fund/
+  S04    5  PPFAS AMC - Parag Parikh Dynamic Asset Allocation Fund - scheme page
+            https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+  S05    5  PPFAS AMC - Parag Parikh Liquid Fund - scheme page
+            https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+  S06    1  PPFAS AMC - All schemes index
+            https://amc.ppfas.com/schemes/
+  S07   22  PPFAS AMC - Monthly Factsheet - August 2026
+            https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+  S08    3  PPFAS AMC - Factsheet archive
+            https://amc.ppfas.com/downloads/factsheet/
+  S09    1  PPFAS AMC - Total Expense Ratio (TER) disclosures
+            https://amc.ppfas.com/statutory-disclosures/total-expense-ratio-TER/
+  S10    4  PPFAS AMC - KIM - Parag Parikh ELSS Tax Saver Fund
+            https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf
+  S11    -  PPFAS AMC - KIM & SID - Parag Parikh Flexi Cap Fund
+            https://amc.ppfas.com/downloads/parag-parikh-flexi-cap-fund/KIM_PPFCF.pdf
+  S12    -  PPFAS AMC - SID - Parag Parikh Flexi Cap Fund
+            https://amc.ppfas.com/downloads/parag-parikh-flexi-cap-fund/SID_PPFCF.pdf
+  S13    -  PPFAS AMC - KIM - Parag Parikh Conservative Hybrid Fund
+            https://amc.ppfas.com/downloads/parag-parikh-conservative-hybrid-fund/kim-parag-parikh-conservative-hybrid-fund.pdf
+  S14    -  PPFAS AMC - KIM - Parag Parikh Dynamic Asset Allocation Fund
+            https://amc.ppfas.com/downloads/parag-parikh-dynamic-asset-allocation-fund/kim-parag-parikh-dynamic-asset-allocation-fund.pdf
+  S15    -  PPFAS AMC - KIM - Parag Parikh Liquid Fund
+            https://amc.ppfas.com/downloads/parag-parikh-liquid-fund/kim-parag-parikh-liquid-fund.pdf
+  S16    2  PPFAS AMC - KIM / SID / SAI document index
+            https://amc.ppfas.com/downloads/kim-sid-and-sai/
+  S17    -  PPFAS AMC - Statement of Additional Information (SAI)
+            https://amc.ppfas.com/downloads/SAI.pdf
+  S18    1  PPFAS AMC - Investor Desk - request statements
+            https://amc.ppfas.com/investor-desk/
+  S19    1  PPFAS AMC - Account statement via missed call
+            https://amc.ppfas.com/investor-desk/statement-via-missed-call/
+  S20    1  PPFAS AMC - Notices and addenda
+            https://amc.ppfas.com/downloads/addendum/
+  S21    1  PPFAS AMC - Entry and exit loads - Parag Parikh ELSS Tax Saver Fund
+            https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/entry-exit-load
+  S22    1  AMFI - Risk-o-meter
+            https://www.amfiindia.com/online-center/risk-o-meter
+  S23    -  AMFI - Risks in mutual funds (knowledge centre)
+            https://www.amfiindia.com/investor/knowledge-center-info?zoneName=riskInMutualFunds
+  S24    -  SEBI - Mutual funds - SEBI intermediaries
+            https://www.sebi.gov.in/sebiweb/other/OtherAction.do?doRecognisedFpi=yes&intmId=13
+
+Registered but not cited by any fact: S11, S12, S13, S14, S15, S17, S23, S24
+(kept in the register because the brief asks for the full source list)

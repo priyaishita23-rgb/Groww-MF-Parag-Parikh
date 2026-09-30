@@ -1,0 +1,15 @@
+# v2 — the embedding pipeline (PRD.md TR-2, TR-3; ARCHITECTURE.md §11).
+#
+# Opt-in. Installing these is NOT required to run v1, and nothing reachable from
+# `import ppfaq` may import them at module level — see IMPLEMENTATION.md rule R5.
+#
+#     pip install -r requirements-v2.txt
+#     python scripts/build_chunks.py
+#     python scripts/ingest.py
+#     RETRIEVER_BACKEND=vector python app.py
+#
+# Note: sentence-transformers pulls in torch (~2 GB on Windows) and downloads the
+# ~90 MB MiniLM model on first use. Pre-warm before a live demo.
+
+sentence-transformers>=2.2
+chromadb>=0.4

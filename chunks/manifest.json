@@ -1,0 +1,8 @@
+{
+  "corpus_fingerprint": "e34d20ee8f76cf17bcab0f45ff7d247041795c5dd20ca84244b21c8e22722f33",
+  "chunks_fingerprint": "1f47f6f6a56a0b0ae4a787b194f1b928389939671d29507d8bbeb5e88af2c190",
+  "chunk_count": 55,
+  "max_chars": 900,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dim": 384
+}

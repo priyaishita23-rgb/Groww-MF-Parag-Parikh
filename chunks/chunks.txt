@@ -1,0 +1,671 @@
+==============================================================================
+RAG STAGE 2 - CHUNK
+==============================================================================
+Strategy         recursive section-aware, numeric conditions kept whole
+Max chars        900
+Separator ladder '\n\n' | '\n' | '. ' | '; ' | ', '
+Overlap          none - every chunk repeats the scheme/topic header instead
+Documents in     55
+Chunks out       55  (0 from split documents)
+Chars            min 210  mean 349  max 499
+
+------------------------------------------------------------------------------
+[C01]  PPFCF - expense_ratio - S07  (469 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Expense ratio
+Keywords: expense ratio ter total expense ratio cost charges fees regular direct plan
+Fact: Parag Parikh Flexi Cap Fund's base expense ratio is 1.05% for the Regular Plan and 0.53% for the Direct Plan, as on the last business day of August 2026. Base expense ratio is exclusive of GST on management fees and of other permitted add-ons; the AMC publishes the current applicable TER separately.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C02]  PPTSF - expense_ratio - S07  (479 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Expense ratio
+Keywords: expense ratio ter total expense ratio cost charges fees regular direct plan
+Fact: Parag Parikh ELSS Tax Saver Fund's base expense ratio is 1.54% for the Regular Plan and 0.54% for the Direct Plan, as on the last business day of August 2026. Base expense ratio is exclusive of GST on management fees and of other permitted add-ons; the AMC publishes the current applicable TER separately.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C03]  PPCHF - expense_ratio - S07  (489 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Expense ratio
+Keywords: expense ratio ter total expense ratio cost charges fees regular direct plan
+Fact: Parag Parikh Conservative Hybrid Fund's base expense ratio is 0.54% for the Regular Plan and 0.24% for the Direct Plan, as on the last business day of August 2026. Base expense ratio is exclusive of GST on management fees and of other permitted add-ons; the AMC publishes the current applicable TER separately.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C04]  PPDAAF - expense_ratio - S07  (499 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Expense ratio
+Keywords: expense ratio ter total expense ratio cost charges fees regular direct plan
+Fact: Parag Parikh Dynamic Asset Allocation Fund's base expense ratio is 0.53% for the Regular Plan and 0.23% for the Direct Plan, as on the last business day of August 2026. Base expense ratio is exclusive of GST on management fees and of other permitted add-ons; the AMC publishes the current applicable TER separately.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C05]  PPLF - expense_ratio - S07  (463 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Expense ratio
+Keywords: expense ratio ter total expense ratio cost charges fees regular direct plan
+Fact: Parag Parikh Liquid Fund's base expense ratio is 0.17% for the Regular Plan and 0.09% for the Direct Plan, as on the last business day of August 2026. Base expense ratio is exclusive of GST on management fees and of other permitted add-ons; the AMC publishes the current applicable TER separately.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C06]  ALL - ter_where - S09  (395 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Ter where
+Keywords: latest current ter expense ratio updated where find disclosure monthly change
+Fact: PPFAS publishes the applicable Total Expense Ratio of every scheme on its statutory disclosures page, updated through the month and archived by date. Use that page when you need the TER effective today rather than the month-end figure printed in a factsheet.
+
+Source: PPFAS - Total Expense Ratio (TER) disclosures
+        https://amc.ppfas.com/statutory-disclosures/total-expense-ratio-TER/
+As on:  September 28, 2026
+
+------------------------------------------------------------------------------
+[C10]  PPFCF - exit_load - S07  (477 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Exit load
+Keywords: exit load redemption charge switch out penalty redeem sell
+Fact: For each purchase or switch-in into Parag Parikh Flexi Cap Fund, 10% of the units may be redeemed without any exit load from the date of allotment. Redemption or switch-out above that limit carries 2.00% if made on or before 365 days, 1.00% if made after 365 days but on or before 730 days, and nil after 730 days from allotment.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C11]  PPTSF - exit_load - S10  (394 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Exit load
+Keywords: exit load entry load redemption charge switch out penalty redeem sell
+Fact: Parag Parikh ELSS Tax Saver Fund charges no entry load and no exit load - both are Nil per the scheme's Key Information Memorandum. Units are instead subject to the statutory ELSS lock-in of three years from the date of allotment.
+
+Source: KIM - Parag Parikh ELSS Tax Saver Fund
+        https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C12]  PPCHF - exit_load - S07  (429 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Exit load
+Keywords: exit load redemption charge switch out penalty redeem sell
+Fact: For each purchase or switch-in into Parag Parikh Conservative Hybrid Fund, 10% of the units may be redeemed without any exit load from the date of allotment. Redemption or switch-out above that limit carries 1.00% if made within 1 year from allotment, and nil thereafter.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C13]  PPDAAF - exit_load - S07  (439 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Exit load
+Keywords: exit load redemption charge switch out penalty redeem sell
+Fact: For each purchase or switch-in into Parag Parikh Dynamic Asset Allocation Fund, 10% of the units may be redeemed without any exit load from the date of allotment. Redemption or switch-out above that limit carries 1.00% if made within 1 year from allotment, and nil thereafter.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C14]  PPLF - exit_load - S05  (453 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Exit load
+Keywords: exit load redemption charge switch out penalty redeem sell graded seven days
+Fact: Parag Parikh Liquid Fund has no entry load and a graded exit load within the first 7 calendar days: 0.0070% on Day 1, 0.0065% Day 2, 0.0060% Day 3, 0.0055% Day 4, 0.0050% Day 5, 0.0045% Day 6 and 0.0000% from Day 7 onwards. Any exit load charged, net of GST, is credited back to the Scheme.
+
+Source: Parag Parikh Liquid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C20]  PPTSF - lock_in - S10  (483 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Lock in
+Keywords: lock in lockin elss three years 3 years 80c tax saver redeem before maturity
+Fact: Units of Parag Parikh ELSS Tax Saver Fund cannot be assigned, transferred, pledged, redeemed or switched out until completion of 3 years from the date of allotment of the respective units. The AMC may change the lock-in period prospectively only to the extent permitted under the Equity Linked Saving Scheme, 2005.
+
+Source: KIM - Parag Parikh ELSS Tax Saver Fund
+        https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C30]  PPFCF - min_investment - S01  (302 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Min investment
+Keywords: minimum investment lumpsum lump sum new purchase additional amount how much start
+Fact: Parag Parikh Flexi Cap Fund has a minimum of Rs. 1,000 for a new (lump sum) purchase and Rs. 1,000 for an additional purchase.
+
+Source: Parag Parikh Flexi Cap Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C31]  PPTSF - min_investment - S10  (349 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Min investment
+Keywords: minimum investment lumpsum lump sum new purchase additional amount how much start
+Fact: Parag Parikh ELSS Tax Saver Fund has a minimum application amount of Rs. 500 and in multiples of Rs. 500 thereafter, for both a new purchase and an additional purchase.
+
+Source: KIM - Parag Parikh ELSS Tax Saver Fund
+        https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C32]  PPCHF - min_investment - S07  (270 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Min investment
+Keywords: minimum investment lumpsum lump sum new purchase amount how much start
+Fact: Parag Parikh Conservative Hybrid Fund has a minimum of Rs. 5,000 for a new (lump sum) purchase.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C33]  PPDAAF - min_investment - S04  (324 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Min investment
+Keywords: minimum investment lumpsum lump sum new purchase additional amount how much start
+Fact: Parag Parikh Dynamic Asset Allocation Fund has a minimum of Rs. 5,000 for an initial purchase and Rs. 500 for an additional purchase.
+
+Source: Parag Parikh Dynamic Asset Allocation Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C34]  PPLF - min_investment - S05  (285 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Min investment
+Keywords: minimum investment lumpsum lump sum new purchase additional amount how much start
+Fact: Parag Parikh Liquid Fund has a minimum of Rs. 5,000 for a new purchase and Rs. 1,000 for an additional purchase.
+
+Source: Parag Parikh Liquid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C40]  PPFCF - min_sip - S01  (265 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Min sip
+Keywords: minimum sip monthly quarterly systematic investment plan smallest
+Fact: The minimum SIP in Parag Parikh Flexi Cap Fund is Rs. 1,000 for a monthly SIP and Rs. 3,000 for a quarterly SIP.
+
+Source: Parag Parikh Flexi Cap Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C41]  PPTSF - min_sip - S10  (424 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Min sip
+Keywords: minimum sip monthly quarterly systematic investment plan smallest
+Fact: The minimum SIP in Parag Parikh ELSS Tax Saver Fund is Rs. 1,000 for a monthly SIP (in multiples of Rs. 500 thereafter) and Rs. 3,000 for a quarterly SIP. The minimum total SIP amount per application is Rs. 6,000 for monthly and Rs. 12,000 for quarterly frequencies.
+
+Source: KIM - Parag Parikh ELSS Tax Saver Fund
+        https://amc.ppfas.com/downloads/parag-parikh-tax-saver-fund/kim-parag-parikh-tax-saver-fund.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C42]  PPCHF - min_sip - S07  (285 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Min sip
+Keywords: minimum sip monthly quarterly systematic investment plan smallest
+Fact: The minimum SIP in Parag Parikh Conservative Hybrid Fund is Rs. 1,000 for a monthly SIP and Rs. 3,000 for a quarterly SIP.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C43]  PPDAAF - min_sip - S04  (295 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Min sip
+Keywords: minimum sip monthly quarterly systematic investment plan smallest
+Fact: The minimum SIP in Parag Parikh Dynamic Asset Allocation Fund is Rs. 1,000 for a monthly SIP and Rs. 3,000 for a quarterly SIP.
+
+Source: Parag Parikh Dynamic Asset Allocation Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C44]  PPLF - min_sip - S05  (259 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Min sip
+Keywords: minimum sip monthly quarterly systematic investment plan smallest
+Fact: The minimum SIP in Parag Parikh Liquid Fund is Rs. 1,000 for a monthly SIP and Rs. 3,000 for a quarterly SIP.
+
+Source: Parag Parikh Liquid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C50]  PPFCF - riskometer - S01  (336 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Riskometer
+Keywords: riskometer risk o meter risk level how risky product label
+Fact: The scheme riskometer for Parag Parikh Flexi Cap Fund reads Very High Risk, as on August 31, 2026. The riskometer is a SEBI-mandated risk label and is re-evaluated by the AMC every month.
+
+Source: Parag Parikh Flexi Cap Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C51]  PPTSF - riskometer - S02  (346 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Riskometer
+Keywords: riskometer risk o meter risk level how risky product label
+Fact: The scheme riskometer for Parag Parikh ELSS Tax Saver Fund reads Very High Risk, as on August 31, 2026. The riskometer is a SEBI-mandated risk label and is re-evaluated by the AMC every month.
+
+Source: Parag Parikh ELSS Tax Saver Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C52]  PPCHF - riskometer - S03  (362 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Riskometer
+Keywords: riskometer risk o meter risk level how risky product label
+Fact: The scheme riskometer for Parag Parikh Conservative Hybrid Fund reads Moderately High Risk, as on August 31, 2026. The riskometer is a SEBI-mandated risk label and is re-evaluated by the AMC every month.
+
+Source: Parag Parikh Conservative Hybrid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-conservative-hybrid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C53]  PPDAAF - riskometer - S04  (372 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Riskometer
+Keywords: riskometer risk o meter risk level how risky product label
+Fact: The scheme riskometer for Parag Parikh Dynamic Asset Allocation Fund reads Moderately High Risk, as on August 31, 2026. The riskometer is a SEBI-mandated risk label and is re-evaluated by the AMC every month.
+
+Source: Parag Parikh Dynamic Asset Allocation Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C54]  PPLF - riskometer - S05  (336 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Riskometer
+Keywords: riskometer risk o meter risk level how risky product label
+Fact: The scheme riskometer for Parag Parikh Liquid Fund reads Low to Moderate Risk, as on August 31, 2026. The riskometer is a SEBI-mandated risk label and is re-evaluated by the AMC every month.
+
+Source: Parag Parikh Liquid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C55]  ALL - riskometer_explainer - S22  (408 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Riskometer explainer
+Keywords: what is riskometer meaning levels explain how often updated six levels scale
+Fact: The Risk-o-meter is the standard SEBI risk label shown on every mutual fund scheme, running from Low through Low to Moderate, Moderate, Moderately High, High and Very High. AMFI hosts the industry-wide Risk-o-meter disclosure, which mutual funds update monthly.
+
+Source: AMFI - Risk-o-meter
+        https://www.amfiindia.com/online-center/risk-o-meter
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C60]  PPFCF - benchmark - S07  (247 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Benchmark
+Keywords: benchmark index tier 1 compared against nifty crisil
+Fact: The benchmark of Parag Parikh Flexi Cap Fund is NIFTY 500 (TRI), which is also its AMFI Tier I benchmark.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C61]  PPTSF - benchmark - S07  (257 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Benchmark
+Keywords: benchmark index tier 1 compared against nifty crisil
+Fact: The benchmark of Parag Parikh ELSS Tax Saver Fund is NIFTY 500 (TRI), which is also its AMFI Tier I benchmark.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C62]  PPCHF - benchmark - S07  (246 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Benchmark
+Keywords: benchmark index compared against nifty crisil
+Fact: The benchmark of Parag Parikh Conservative Hybrid Fund is the CRISIL Hybrid 85+15 Conservative Index.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C63]  PPDAAF - benchmark - S04  (252 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Benchmark
+Keywords: benchmark index compared against nifty crisil
+Fact: The benchmark of Parag Parikh Dynamic Asset Allocation Fund is the CRISIL Hybrid 50+50 Moderate Index.
+
+Source: Parag Parikh Dynamic Asset Allocation Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C64]  PPLF - benchmark - S07  (210 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Benchmark
+Keywords: benchmark index compared against nifty crisil
+Fact: The benchmark of Parag Parikh Liquid Fund is the CRISIL Liquid Debt A-I Index.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C70]  PPFCF - category - S01  (361 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Category
+Keywords: category type of scheme what kind open ended objective
+Fact: Parag Parikh Flexi Cap Fund is an open-ended dynamic equity scheme investing across large cap, mid cap and small cap stocks. It invests in Indian equities, foreign equities and related instruments, and debt securities.
+
+Source: Parag Parikh Flexi Cap Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-flexi-cap-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C71]  PPTSF - category - S07  (437 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Category
+Keywords: category type of scheme what kind open ended objective elss 80c
+Fact: Parag Parikh ELSS Tax Saver Fund is an open-ended scheme with attributes in accordance with the Equity Linked Saving Scheme, 2005 notified by the Ministry of Finance. At least 80% of total assets are invested in equity and equity related securities in accordance with that scheme.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C72]  PPCHF - category - S03  (402 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Category
+Keywords: category type of scheme what kind open ended objective hybrid debt
+Fact: Parag Parikh Conservative Hybrid Fund is an open-ended hybrid scheme investing predominantly in debt instruments. It seeks regular income from debt and money market instruments plus long-term capital appreciation from its equity portion.
+
+Source: Parag Parikh Conservative Hybrid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-conservative-hybrid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C73]  PPDAAF - category - S04  (368 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Category
+Keywords: category type of scheme what kind open ended objective dynamic
+Fact: Parag Parikh Dynamic Asset Allocation Fund is an open-ended dynamic asset allocation fund investing in debt and equity instruments only. The split between equity and fixed income is managed dynamically.
+
+Source: Parag Parikh Dynamic Asset Allocation Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-dynamic-asset-allocation-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C74]  PPLF - category - S05  (322 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Category
+Keywords: category type of scheme what kind open ended objective liquid
+Fact: Parag Parikh Liquid Fund is an open-ended liquid scheme with relatively low interest rate risk and relatively low credit risk. It invests in money market and debt instruments.
+
+Source: Parag Parikh Liquid Fund - scheme page
+        https://amc.ppfas.com/schemes/parag-parikh-liquid-fund/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C80]  PPFCF - inception - S07  (220 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Inception
+Keywords: inception date allotment launched when started age nfo
+Fact: Parag Parikh Flexi Cap Fund's date of inception / allotment is May 24, 2013.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C81]  PPTSF - inception - S07  (231 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh ELSS Tax Saver Fund (PPFAS Mutual Fund)
+Topic: Inception
+Keywords: inception date allotment launched when started age nfo
+Fact: Parag Parikh ELSS Tax Saver Fund's date of inception / allotment is July 24, 2019.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C82]  PPCHF - inception - S07  (240 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Conservative Hybrid Fund (PPFAS Mutual Fund)
+Topic: Inception
+Keywords: inception date allotment launched when started age nfo
+Fact: Parag Parikh Conservative Hybrid Fund's date of inception / allotment is May 26, 2021.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C83]  PPDAAF - inception - S07  (255 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Dynamic Asset Allocation Fund (PPFAS Mutual Fund)
+Topic: Inception
+Keywords: inception date allotment launched when started age nfo
+Fact: Parag Parikh Dynamic Asset Allocation Fund's date of inception / allotment is February 27, 2024.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C84]  PPLF - inception - S07  (214 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Inception
+Keywords: inception date allotment launched when started age nfo
+Fact: Parag Parikh Liquid Fund's date of inception / allotment is May 11, 2018.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C90]  PPFCF - fund_managers - S07  (367 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Flexi Cap Fund (PPFAS Mutual Fund)
+Topic: Fund managers
+Keywords: fund manager who manages managed by team cio
+Fact: Parag Parikh Flexi Cap Fund is managed by Rajeev Thakkar, Raunak Onkar (dedicated to overseas securities), Raj Mehta and Rukun Tarachandani on the equity side, and by Tejas Soman, Mansi Kariya and Aishwarya Dhar on the debt side.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C91]  PPLF - fund_managers - S07  (258 chars)
+------------------------------------------------------------------------------
+Scheme: Parag Parikh Liquid Fund (PPFAS Mutual Fund)
+Topic: Fund managers
+Keywords: fund manager who manages managed by team cio debt
+Fact: Parag Parikh Liquid Fund is managed by Tejas Soman (Chief Investment Officer - Debt), Mansi Kariya and Aishwarya Dhar.
+
+Source: PPFAS Monthly Factsheet - August 2026
+        https://amc.ppfas.com/downloads/factsheet/2026/ppfas-mf-factsheet-for-August-2026.pdf
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C95]  ALL - plans - S16  (349 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Plans
+Keywords: plans options growth idcw direct regular dividend available
+Fact: PPFAS schemes are offered in a Direct Plan and a Regular Plan, each with a Growth Option and an Income Distribution cum Capital Withdrawal (IDCW) Option. The exact sub-options for a scheme are listed in its Key Information Memorandum.
+
+Source: PPFAS - KIM / SID / SAI document index
+        https://amc.ppfas.com/downloads/kim-sid-and-sai/
+As on:  August 31, 2026
+
+------------------------------------------------------------------------------
+[C100]  ALL - capital_gains_statement - S18  (404 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Capital gains statement
+Keywords: capital gains statement download tax cg loss statement how to get itr filing
+Fact: PPFAS routes statement requests through its registrar CAMS: on the AMC's Investor Desk page, use the Capital Gain / Loss Statement link to generate the statement for your folio. The same page also offers the Account Statement and the Exit Load Statement.
+
+Source: PPFAS - Investor Desk (request statements)
+        https://amc.ppfas.com/investor-desk/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C101]  ALL - account_statement - S19  (397 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Account statement
+Keywords: account statement download soa holding statement how to get missed call
+Fact: An account statement can be generated from the Account Statement link on the PPFAS Investor Desk page, which is powered by the registrar CAMS. PPFAS also offers an account statement on a missed call to the number listed on its statement-via-missed-call page.
+
+Source: PPFAS - Account statement via missed call
+        https://amc.ppfas.com/investor-desk/statement-via-missed-call/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C102]  ALL - documents - S16  (449 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Documents
+Keywords: sid kim sai scheme information document key information memorandum where download offer document
+Fact: The Scheme Information Document (SID), Key Information Memorandum (KIM) and Statement of Additional Information (SAI) for every PPFAS scheme are published on the AMC's KIM / SID / SAI download page. These are the authoritative documents for load structure, minimum amounts and scheme features.
+
+Source: PPFAS - KIM / SID / SAI document index
+        https://amc.ppfas.com/downloads/kim-sid-and-sai/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C103]  ALL - factsheet - S08  (321 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Factsheet
+Keywords: factsheet monthly fact sheet portfolio performance returns nav aum where find holdings
+Fact: PPFAS publishes a monthly factsheet for all its schemes, archived by month on the AMC's factsheet page. Scheme performance, NAV, AUM and portfolio details are disclosed there.
+
+Source: PPFAS - Factsheet archive
+        https://amc.ppfas.com/downloads/factsheet/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C104]  ALL - addendum - S20  (344 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Addendum
+Keywords: addendum notice change load structure announcement update circular
+Fact: Changes to a PPFAS scheme's load structure, minimum amounts or other features are notified through addenda published on the AMC's Notices and Addenda page. Check it if a figure quoted from a factsheet looks out of date.
+
+Source: PPFAS - Notices and addenda
+        https://amc.ppfas.com/downloads/addendum/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C105]  ALL - scheme_list - S06  (457 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Scheme list
+Keywords: which schemes list funds offered covered cover coverage available amc ppfas scope answer handle
+Fact: This assistant covers five PPFAS schemes: Parag Parikh Flexi Cap Fund, Parag Parikh ELSS Tax Saver Fund, Parag Parikh Conservative Hybrid Fund, Parag Parikh Dynamic Asset Allocation Fund and Parag Parikh Liquid Fund. The AMC's full scheme list also includes the Large Cap Fund and the Arbitrage Fund.
+
+Source: PPFAS - Schemes
+        https://amc.ppfas.com/schemes/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C107]  ALL - nav - S08  (323 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Nav
+Keywords: nav net asset value daily price unit price latest today where published
+Fact: Daily NAV per unit for every PPFAS plan and option is published by the AMC, and the month-end NAV of each plan is printed in the monthly factsheet. This assistant does not quote or track NAV values.
+
+Source: PPFAS - Factsheet archive
+        https://amc.ppfas.com/downloads/factsheet/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C108]  ALL - aum - S08  (289 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Aum
+Keywords: aum assets under management fund size aaum how big corpus
+Fact: AUM and average AUM for each PPFAS scheme are disclosed month by month in the AMC's monthly factsheet. This assistant does not quote AUM figures, because they change every month.
+
+Source: PPFAS - Factsheet archive
+        https://amc.ppfas.com/downloads/factsheet/
+As on:  September 2026
+
+------------------------------------------------------------------------------
+[C106]  ALL - entry_load - S21  (314 chars)
+------------------------------------------------------------------------------
+Scheme: All PPFAS schemes
+Topic: Entry load
+Keywords: entry load charged on purchase upfront commission
+Fact: No PPFAS scheme charges an entry load; entry load has been Not Applicable since the SEBI circular dated June 30, 2009, effective August 1, 2009. Investors may pay commission to their distributor directly.
+
+Source: Entry and exit loads - Parag Parikh ELSS Tax Saver Fund
+        https://amc.ppfas.com/schemes/parag-parikh-elss-tax-saver-fund/entry-exit-load
+As on:  September 2026
+
