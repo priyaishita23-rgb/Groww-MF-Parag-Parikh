@@ -8,7 +8,7 @@ A facts-only mutual fund FAQ assistant for Groww, scoped to PPFAS schemes.
 | **Date** | 29 September 2026 |
 | **Owner** | Ishita Priya |
 | **Requirements source** | `Problemstatement.txt` — Mutual Fund FAQs (Facts-Only Q&A Assistant) |
-| **Status** | v1 shipped; v2 retrieval pipeline specified, not yet built |
+| **Status** | v1 shipped and default; v2 pipeline built (39/44 parity); generation built, off by default |
 | **Purpose** | Milestone deliverable #6 — product requirements + class demo spec |
 
 Scheme scope confirmed as PPFAS Mutual Fund on 29 September 2026.
@@ -201,10 +201,45 @@ a hard citation contract, it is worth more than fluency.
 | Runtime | Python 3.9+ stdlib only, `python app.py` | Zero install, no API key, works offline |
 | Hosted build | Single-page JS port over the same corpus files | Shareable link; no backend needed |
 
-### 7.2 v2 — specified, not yet built
+### 7.2 v2 — built, not yet at parity
 
-`Problemstatement.txt` §"Technical Architecture Pipeline" mandates an embedding-based
-pipeline. v1 does not implement it. Requirements:
+**Status as of 30 September 2026.** The pipeline exists and runs. It is not the
+default, because it answers 5 of 44 parity questions worse than v1.
+
+| Requirement | Status |
+|---|---|
+| TR-1 chunking | **built** — recursive section-aware, numeric conditions protected, `chunks/chunks.txt` |
+| TR-2 embeddings | **built** — all-MiniLM-L6-v2, 384-dim, local, `chunks/embeddings.txt` |
+| TR-3 vector DB | **built** — ChromaDB persisted to `vectorstore/`, ingestion runs once |
+| TR-4 retrieval | **built** — scheme pre-filter as a Chroma `where` clause, then vector search |
+| TR-5 guards unchanged | **held** — deterministic, still ahead of retrieval, identical on both backends |
+| TR-6 parity | **not met** — 39/44 |
+| `MIN_SCORE_VECTOR` | **not set** — see below |
+
+**The threshold was deliberately not chosen.** Calibration found no floor that
+answers every in-scope question and refuses every out-of-scope one, on either
+backend or either scoring quantity (`docs/calibration.txt`):
+
+| backend · quantity | lowest in-scope | highest out-of-scope | overlap |
+|---|---|---|---|
+| tfidf · biased | 0.3364 | 0.3862 | 0.0497 |
+| tfidf · raw | 0.2083 | 0.2357 | 0.0274 |
+| vector · biased | 0.4239 | 0.8033 | 0.3794 |
+| vector · raw | 0.4239 | 0.5533 | 0.1294 |
+
+Picking a value anyway would have hidden this rather than fixed it. FR-16 is
+therefore **partially met**: out-of-scope questions are refused by the guards and by
+the floor, but 2 of 27 on `tfidf` and 6 of 27 on `vector` still return a nearest
+fact. What remains are questions naming a covered fund while asking about a topic
+the corpus does not hold — ISIN, modified duration, custodian, portfolio turnover.
+
+**One finding changed the guard design.** The worst leaks were not a threshold
+problem at all. *"lock-in for the ICICI ELSS fund"* scored 0.853 — above most
+legitimate questions — because "elss" matches a scheme alias and the scheme bias
+lifts it. An out-of-AMC guard now settles scope before retrieval, which closed that
+category and cut the tfidf raw overlap from 0.2955 to 0.0274.
+
+**The requirements this was built against:**
 
 | ID | Requirement |
 |---|---|
@@ -215,16 +250,47 @@ pipeline. v1 does not implement it. Requirements:
 | TR-5 | Guardrails (GR-1…GR-6) stay deterministic and stay **ahead** of retrieval, unchanged |
 | TR-6 | Citation contract (FR-11) preserved: a cited URL must exist in the retrieved chunks |
 
-**Acceptance for v2:** the parity script must show v2 answering the 40-question set
+**Acceptance for v2:** the parity script must show v2 answering the parity set
 identically to v1 on all facts, with no new advice or performance leakage.
+Currently 39/44 — `scripts/check_parity_v2.py`.
 
-**Known gap.** If the evaluator checks for ChromaDB specifically, v1 will not show it.
-v1 is the working demo; v2 is the mandated pipeline. Carry both into the demo and be
-explicit about which is which — §9 records the answer to give.
+### 7.3 Generation — built, optional, off by default
+
+`Problemstatement.txt` asks for a Retrieval **and Generation** stage. With
+`GENERATION=on` the assistant phrases an answer with Gemini instead of returning the
+stored sentence. It is off by default, so the demo path, the golden baseline and both
+parity gates are unaffected.
+
+| ID | Requirement |
+|---|---|
+| TR-7 | The model receives **only** the retrieved chunk. No outside knowledge, ≤3 sentences, no advice, no performance |
+| TR-8 | The model **never supplies the citation**. Title, URL and as-of date are attached afterwards from the chunk retrieval selected, so a generated answer cannot cite a document it was not built from |
+| TR-9 | Every numeric token in the generated text must already appear in the source chunk. Any failure discards the generation and uses the stored sentence |
+| TR-10 | Fails closed: no key, network error, timeout, truncation or failed check all fall back silently |
+
+TR-8 is the structural half of FR-11. The model is not trusted to cite correctly; it
+is never given the opportunity.
+
+**Two defects found in testing, both recorded because they generalise.**
+`gemini-3.8-flash` is a thinking model and `maxOutputTokens` covers its reasoning as
+well as the reply — at 256 it spent 242 tokens thinking, left 10 for the answer, and
+returned a truncated fragment. The budget is now 1024, and this needs rechecking on
+any model change. More importantly, the verifier *accepted* that fragment: truncated
+output is fluent, short, and contains no numbers to check, so every content rule
+passed while the answer said nothing. Verification now rejects any `finishReason`
+other than `STOP`, and any text not ending in terminal punctuation.
+
+**Generation is local-only.** `dist/index.html` runs in the browser and cannot hold
+an API key, so the hosted page always returns stored answers.
 
 ## 8. Acceptance criteria
 
-Enforced by 21 automated tests (`python -m unittest discover -s tests -v`).
+Enforced by 61 automated tests (`python -m unittest discover -s tests -v`), plus two
+gates run explicitly: `tests/negatives.py` (out-of-scope and refusals on both
+backends) and `tests/backends.py` (A11–A17 on both backends). Those two are named so
+discovery skips them — the discovered suite reports the default backend's health and
+stays green, while the gates report the vector backend's true state, which is
+currently failing.
 
 | # | Criterion | Test |
 |---|---|---|
@@ -251,7 +317,7 @@ Enforced by 21 automated tests (`python -m unittest discover -s tests -v`).
 | A21 | Chunk IDs unique | `test_chunk_ids_unique` |
 
 Plus `scripts/check_parity.py` + `check_parity.mjs` — the hosted JS page and the Python
-service must answer 40 questions identically.
+service must answer 44 questions identically.
 
 ## 9. Class demo spec
 
@@ -299,6 +365,15 @@ carries an as-of date. Refresh from the linked sources and bump `corpus_last_upd
 | 5 | Disclaimer snippet | `docs/disclaimer.md` | Done |
 | 6 | PRD — requirements + class demo spec | `PRD.md` | This document |
 
+Verified present on 30 September 2026. The demo run sheet in §9 was rehearsed
+end to end against the running assistant on the same date: all eight question
+steps behave as the sheet claims, so no corrections were needed.
+
+**Beyond the brief**, also produced: `ARCHITECTURE.md`, `IMPLEMENTATION.md`,
+`docs/calibration.txt` (the threshold sweep), and the three pipeline artefacts
+`chunks/documents.txt`, `chunks/chunks.txt` and `chunks/embeddings.txt` — the
+inspectable output of RAG stages 1, 2 and 3.
+
 ## 11. Known limits
 
 - **Figures go stale.** TER changes through the month; riskometers are re-rated
@@ -314,7 +389,7 @@ carries an as-of date. Refresh from the linked sources and bump `corpus_last_upd
 - **One citation per answer, by design.** Where a fact appears in both the factsheet
   and the KIM, only the source actually used is cited.
 - **Two implementations.** The hosted page is a JS port of the Python logic over the
-  same corpus. `scripts/check_parity.*` guards the pair across 40 questions, but a
+  same corpus. `scripts/check_parity.*` guards the pair across 44 questions, but a
   change to one must still be mirrored in the other.
 - **Coverage is narrow on purpose.** Five schemes, one AMC. Taxation, NAV history,
   portfolio holdings and anything requiring a login are out of scope.

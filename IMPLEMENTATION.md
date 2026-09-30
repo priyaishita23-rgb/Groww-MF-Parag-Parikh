@@ -11,6 +11,26 @@ Phase-by-phase build guide for an AI coding agent (Cursor), implementing
 | **Implements** | ARCHITECTURE §11 (TR-1…TR-6) |
 | **Baseline** | v1, shipped and passing 21 tests + 40-question parity |
 
+> **This is the plan as written, kept as a record.** Counts inside the phases (21
+> tests, 40 parity questions) were true when it was written and are left alone; the
+> suite is now 61 tests and 44 parity questions.
+>
+> **Where it ended up, 30 September 2026:**
+>
+> | Phase | Outcome |
+> |---|---|
+> | 0, 1, 2A | done — baseline frozen, seam extracted, no behaviour change |
+> | 2B, 2C | done — load and chunk, with provenance enforced at load time |
+> | 4, 5 | done — MiniLM + ChromaDB, hard scheme filter preserved |
+> | 6 | **stopped and reported.** No workable floor exists on either backend; `MIN_SCORE_VECTOR` deliberately unset. An out-of-AMC guard was added instead, which closed the largest leak category |
+> | 6B | added, not in the original plan — the Phase 6 guards had to be mirrored into the JS port, and the parity set extended so the check could catch that class of drift at all |
+> | 7 | gate built; **fails at 39/44.** All five divergences are v2 regressions, three caused by MiniLM lacking v1's synonym map |
+> | 8 | done — docs reconciled, demo run sheet rehearsed, deliverables verified |
+> | 9 | added — optional grounded generation, off by default |
+>
+> **Still open:** query-side synonym expansion (would likely fix 3 of the 5
+> divergences), and a decision on FR-16 given no floor separates cleanly.
+
 ---
 
 ## What this plan does and does not cover

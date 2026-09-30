@@ -79,7 +79,7 @@ app.py ──────────────── HTTP transport, JSON API
 
 ppfaq/cli.py ─────────── terminal front end, same Assistant
 scripts/ ─────────────── build + verification, never imported at runtime
-tests/ ───────────────── 21 tests
+tests/ ───────────────── 61 tests + 2 explicit gates
 ```
 
 **Dependency rule:** dependencies point inward, and nothing points back out.
@@ -381,7 +381,7 @@ registry, the UI copy and `MIN_SCORE` into the template at build time by replaci
 `/*__MARKER__*/` sentinels, failing the build if a marker is missing. Neither the data
 nor the threshold is retyped in JavaScript — only the *algorithm* is duplicated.
 
-**Enforced parity.** `scripts/check_parity.py` runs a fixed **40-question** set through
+**Enforced parity.** `scripts/check_parity.py` runs a fixed **44-question** set through
 the Python assistant and writes `scratch/python-answers.json`;
 `scripts/check_parity.mjs` runs the same 40 through the JS build and diffs. The set spans
 facts, abbreviations, synonyms, ambiguity, all three refusal families and out-of-scope
@@ -391,7 +391,7 @@ questions.
 python scripts/check_parity.py && node scripts/check_parity.mjs
 ```
 
-This is a guard rail, not a proof — it covers 40 questions, not the input space. Any
+This is a guard rail, not a proof — it covers 44 questions, not the input space. Any
 change to retrieval or guards must be mirrored in both and re-verified.
 
 ## 10. Build and verification
@@ -406,7 +406,7 @@ Generated artefacts, never hand-edited:
 
 ```bash
 python scripts/make_samples.py && python scripts/build_standalone.py   # regenerate
-python -m unittest discover -s tests -v                                # 21 tests
+python -m unittest discover -s tests -v                                # 61 tests
 python scripts/check_parity.py && node scripts/check_parity.mjs        # parity
 ```
 
@@ -423,10 +423,18 @@ transcript of real behaviour, so it cannot describe answers the system does not 
 | Routing | A15–A17 | Fallback, clarify-don't-guess, NAV/AUM deflection |
 | Corpus integrity | A18–A21 | Provenance and uniqueness (§4.4) |
 
-## 11. v2 — embedding pipeline (specified, not built)
+## 11. v2 — embedding pipeline (built)
 
-PRD §7.2 mandates MiniLM + ChromaDB. The architecture is designed so this replaces
-**one component**.
+PRD §7.2 mandates MiniLM + ChromaDB. The architecture was designed so this replaces
+**one component**, and that held: `VectorRetriever` implements the same
+`BaseRetriever` interface, and `assistant.py`, `guards.py`, the `Answer` contract and
+both UIs were untouched by it.
+
+**Status: built, not default.** It answers 39 of 44 parity questions the same as v1.
+The five it gets wrong are all regressions, and three have one cause — MiniLM has no
+idea that "TER" means expense ratio, "index" means benchmark, or "launched" means
+inception, where the TF-IDF backend has a 23-entry synonym map that does. Lexical
+knowledge turned out to be doing more work than it looked like.
 
 ### What changes
 
@@ -454,18 +462,74 @@ touching orchestration, guards, the `Answer` contract or the UI.
   metadata clause. MiniLM would not reliably separate two chunks differing only in a
   proper noun, so this becomes *more* important under v2, not less.
 
-### New concerns v2 introduces
+### What the predicted risks actually did
 
-| Concern | Mitigation |
+| Predicted | Outcome |
 |---|---|
-| `MIN_SCORE = 0.24` is calibrated to biased TF-IDF and will not transfer | Re-calibrate against the 40-question parity set; off-topic questions must still fall below |
-| FR-17's max-IDF trick has no embedding equivalent — dense models return a plausible neighbour for *any* input | The re-calibrated floor becomes the **only** out-of-scope defence. Add explicit negative tests |
-| Zero-install and offline-demo properties are lost (torch, chromadb, ~90 MB model) | Keep v1 as the demo path; v2 behind its own entry point |
-| Chroma persistence can drift from an edited corpus | Ingestion writes a corpus hash; mismatch forces a rebuild |
-| The JS port cannot run MiniLM | The hosted page stays on v1. Parity becomes v1↔v1 only; document the divergence |
+| `MIN_SCORE = 0.24` will not transfer | **Worse than predicted.** No floor works on *either* backend — see below |
+| FR-17's max-IDF trick has no embedding equivalent | **Confirmed.** The floor is v2's only out-of-scope defence, and it is not sufficient |
+| Zero-install and offline-demo properties lost | **Avoided.** Every heavy import is inside the function that needs it; `import ppfaq` still loads no third-party package, enforced by `tests/test_zero_install.py` |
+| Chroma persistence can drift from an edited corpus | **Handled.** Two fingerprints, not one — a single hash cannot tell "nothing changed" from "corpus edited, chunks not rebuilt" |
+| The JS port cannot run MiniLM | **Confirmed.** The hosted page stays on v1, stated in the README |
+| — | **Unpredicted:** the +0.25 scheme bias floats any question naming a fund above any floor, including questions about *other* AMCs' funds |
 
-**Acceptance (PRD §7.2):** v2 must answer all 40 parity questions identically on facts,
-with no new advice or performance leakage.
+### The calibration result
+
+No relevance floor separates in-scope from out-of-scope questions, on either backend
+or either scoring quantity (`scripts/calibrate.py`, table in `docs/calibration.txt`):
+
+| backend · quantity | lowest in-scope | highest out-of-scope | overlap |
+|---|---|---|---|
+| tfidf · biased | 0.3364 | 0.3862 | 0.0497 |
+| tfidf · raw | 0.2083 | 0.2357 | 0.0274 |
+| vector · biased | 0.4239 | 0.8033 | 0.3794 |
+| vector · raw | 0.4239 | 0.5533 | 0.1294 |
+
+`MIN_SCORE_VECTOR` was therefore **not set**. A value chosen anyway would have
+concealed the result rather than fixed it.
+
+The measurement did change the design, though. The worst offenders were never a
+threshold problem: *"lock-in for the ICICI ELSS fund"* scored 0.853, above most
+legitimate questions, because "elss" matches a scheme alias, the hard filter narrows
+to the PPFAS ELSS, and the bias lifts it. **Scope is not a similarity judgement**, so
+an out-of-AMC guard now settles it before retrieval — the same shape as every other
+guard in §7. That closed the category and cut the tfidf raw overlap from 0.2955 to
+0.0274. What remains is questions naming a covered fund while asking about an
+uncovered topic (ISIN, modified duration, custodian): 2 of 27 on tfidf, 6 of 27 on
+vector.
+
+### What measurement showed about the embedding space
+
+`chunks/embeddings.txt` part 3 lists each chunk's nearest neighbours. Every
+expense-ratio chunk's three closest neighbours are the *other four funds'*
+expense-ratio chunks, at 0.92–0.95 cosine. Exit loads behave the same way, 0.86–0.92.
+
+**MiniLM clusters by topic, not by scheme.** The five sibling funds are nearly
+indistinguishable in embedding space. This is the empirical case for the hard filter
+(§6.3) — much stronger than the argument from first principles that section makes,
+and it means the filter is load-bearing under v2 rather than merely prudent.
+
+**Acceptance (PRD §7.2):** v2 must answer the parity set identically on facts, with
+no new advice or performance leakage. Currently 39/44 — not met.
+
+## 11a. Generation (built, optional, off by default)
+
+`GENERATION=on` lets Gemini phrase an answer instead of returning the stored
+sentence. Two properties keep FR-11 intact.
+
+**The model never chooses a citation.** It receives one chunk, returns prose, and
+`assistant.py` attaches the title, URL and date from that chunk. There is no code
+path by which a generated answer can cite a document it was not built from — not
+because the model is trusted, but because it is never asked.
+
+**Every figure is checked against the source.** Each numeric token in the output must
+already appear in the chunk. A decimal slip or an invented lock-in is discarded and
+the stored sentence used, silently.
+
+Fails closed on a missing key, network error, timeout, truncation, advisory
+language, a model-supplied URL, or any unverified figure. Uses `urllib`, so enabling
+it adds no dependency. `ppfaq/generate.py`; 15 offline tests in
+`tests/test_generation.py`.
 
 ## 12. Known architectural limits
 
@@ -478,7 +542,17 @@ with no new advice or performance leakage.
 - **Scheme detection is exact-match.** A misspelling ("flexicap" is mapped, "flexi-kap"
   is not) fails to detect, dropping the question into the clarify path. Acceptable —
   asking is safe, guessing is not.
-- **Two implementations.** Guarded across 40 questions, not proven equivalent (§9).
+- **Two implementations, and the guard against them has already failed once.** The
+  Phase 6 guard changes went into Python only; `dist/index.html` kept answering
+  questions the service had started refusing, including one that leaked PII. Parity
+  reported 40/40 throughout, because not one of its questions exercised a guard that
+  had changed — it was passing vacuously. Four questions were added to the set and
+  it now reports 44/44. **A parity set only protects what it exercises**: extend it
+  whenever a guard changes, or it will report success while the two sides diverge.
+- **No relevance floor separates in-scope from out-of-scope questions** on either
+  backend (§11). 2 of 27 leak on tfidf, 6 of 27 on vector.
+- **The vector backend is not at parity** — 39/44, and all five differences are
+  regressions (§11).
 - **The `score` field is not a confidence.** See §6.4.
 - **Dead branch.** `retriever.py:132-134` is a `pass` with an explanatory comment — the
   no-scheme case is handled by the `−0.10` penalty at line 141. Harmless, but it reads

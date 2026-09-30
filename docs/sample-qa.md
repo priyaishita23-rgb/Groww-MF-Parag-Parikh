@@ -1,6 +1,8 @@
 # Sample Q&A
 
-Generated from the running assistant on 2026-09-29 by `python scripts/make_samples.py`. Do not edit by hand.
+Generated from the running assistant on 2026-09-30 by `python scripts/make_samples.py`. Do not edit by hand.
+
+Retrieval backend: **tfidf**. Answers are the stored corpus sentences, not generated. Either way the citation is taken from the retrieved chunk.
 
 > Facts-only assistant. No investment advice. Figures are quoted from public AMC/SEBI/AMFI documents and can change - always confirm on the linked source.
 

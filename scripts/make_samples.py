@@ -1,4 +1,4 @@
-"""Regenerate docs/sample-qa.md straight from the assistant, so the file can
+﻿"""Regenerate docs/sample-qa.md straight from the assistant, so the file can
 never drift from what the prototype actually answers.
 
     python scripts/make_samples.py
@@ -12,6 +12,7 @@ from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from ppfaq import config  # noqa: E402
 from ppfaq.assistant import DISCLAIMER, Assistant  # noqa: E402
 
 QUESTIONS = [
@@ -37,6 +38,10 @@ def main() -> None:
         "",
         f"Generated from the running assistant on {date.today().isoformat()} "
         "by `python scripts/make_samples.py`. Do not edit by hand.",
+        "",
+        f"Retrieval backend: **{config.RETRIEVER_BACKEND}**. "
+        f"Answers are {'phrased by ' + config.GEMINI_MODEL if config.GENERATION else 'the stored corpus sentences, not generated'}. "
+        "Either way the citation is taken from the retrieved chunk.",
         "",
         f"> {DISCLAIMER}",
         "",
