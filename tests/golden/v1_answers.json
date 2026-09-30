@@ -338,6 +338,19 @@
     "followup": null
   },
   {
+    "question": "expense ratio of the HDFC Small Cap Fund",
+    "text": "I don't cover HDFC funds. My sources are the public documents for five PPFAS schemes: Parag Parikh Flexi Cap Fund, Parag Parikh ELSS Tax Saver Fund, Parag Parikh Conservative Hybrid Fund, Parag Parikh Dynamic Asset Allocation Fund, Parag Parikh Liquid Fund.",
+    "source_title": "PPFAS - Schemes",
+    "source_url": "https://amc.ppfas.com/schemes/",
+    "as_on": null,
+    "kind": "no_answer",
+    "scheme": null,
+    "topic": null,
+    "chunk_id": null,
+    "score": null,
+    "followup": null
+  },
+  {
     "question": "folio number 12345678",
     "text": "I can't take a bank or folio number here, and nothing you typed has been stored. Please re-ask without any personal or account details - I only answer general scheme facts from public documents.",
     "source_title": "PPFAS - Schemes",
@@ -377,6 +390,32 @@
     "followup": null
   },
   {
+    "question": "is the liquid fund safe for me",
+    "text": "I'm a facts-only assistant, so I can't say whether a scheme suits you or comment on your portfolio. I can quote published facts such as expense ratio, exit load, lock-in, minimum SIP, riskometer or benchmark.",
+    "source_title": "AMFI - Risks in mutual funds",
+    "source_url": "https://www.amfiindia.com/investor/knowledge-center-info?zoneName=riskInMutualFunds",
+    "as_on": null,
+    "kind": "refusal:advice",
+    "scheme": null,
+    "topic": null,
+    "chunk_id": null,
+    "score": null,
+    "followup": null
+  },
+  {
+    "question": "lock-in for the ICICI ELSS fund",
+    "text": "I don't cover ICICI funds. My sources are the public documents for five PPFAS schemes: Parag Parikh Flexi Cap Fund, Parag Parikh ELSS Tax Saver Fund, Parag Parikh Conservative Hybrid Fund, Parag Parikh Dynamic Asset Allocation Fund, Parag Parikh Liquid Fund.",
+    "source_title": "PPFAS - Schemes",
+    "source_url": "https://amc.ppfas.com/schemes/",
+    "as_on": null,
+    "kind": "no_answer",
+    "scheme": null,
+    "topic": null,
+    "chunk_id": null,
+    "score": null,
+    "followup": null
+  },
+  {
     "question": "min sip",
     "text": "That figure differs by scheme, so tell me which one you mean: Parag Parikh Flexi Cap Fund, Parag Parikh ELSS Tax Saver Fund, Parag Parikh Conservative Hybrid Fund, Parag Parikh Dynamic Asset Allocation Fund, Parag Parikh Liquid Fund.",
     "source_title": "PPFAS - Schemes",
@@ -385,6 +424,19 @@
     "kind": "clarify",
     "scheme": null,
     "topic": "min_sip",
+    "chunk_id": null,
+    "score": null,
+    "followup": null
+  },
+  {
+    "question": "my folio number is 12345678",
+    "text": "I can't take a bank or folio number here, and nothing you typed has been stored. Please re-ask without any personal or account details - I only answer general scheme facts from public documents.",
+    "source_title": "PPFAS - Schemes",
+    "source_url": "https://amc.ppfas.com/schemes/",
+    "as_on": null,
+    "kind": "refusal:pii",
+    "scheme": null,
+    "topic": null,
     "chunk_id": null,
     "score": null,
     "followup": null

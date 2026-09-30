@@ -169,6 +169,25 @@ const PII = [
   ["OTP", /\botp\b\s*(?:is|:)?\s*\d{4,8}\b/i]
 ];
 const PII_WORDS = /\b(pan\s*card|aadhaar|aadhar|otp|cvv|net\s*banking\s*password)\b/i;
+// "my folio number is 12345678" - label and digits separated by words.
+const PII_LABELLED_NUMBER =
+  /\b(folio|account|a\/c|policy|client\s*id|customer\s*id)\b[^.?!]{0,24}?\b\d{6,}\b/i;
+
+// Fund houses this corpus does not cover. No relevance floor can catch these:
+// "lock-in for the ICICI ELSS fund" scores higher than most legitimate
+// questions, because "elss" matches a scheme alias and the scheme bias lifts
+// it. Scope is a decision, not a similarity, so it is settled up front.
+const OTHER_AMCS = new RegExp(
+  "\\b(hdfc|icici|sbi|axis|kotak|nippon|aditya\\s*birla|absl|uti|dsp|mirae|" +
+  "franklin|templeton|tata|canara|robeco|edelweiss|quant|motilal|oswal|" +
+  "invesco|sundaram|bandhan|hsbc|lic\\s*mf|baroda|bnp|pgim|navi|whiteoak|" +
+  "white\\s*oak|360\\s*one|helios|bajaj|samco|iti|shriram|mahindra|" +
+  "jm\\s*financial|old\\s*bridge|unifi|zerodha|nj\\s*mutual|trust\\s*mutual)\\b", "i");
+
+function otherAmc(q){
+  const m = OTHER_AMCS.exec(q || "");
+  return m ? m[0] : null;
+}
 
 const ADVICE = new RegExp(
   "\\b(should i|shall i|should we|can i trust|" +
@@ -179,6 +198,8 @@ const ADVICE = new RegExp(
   "best (fund|scheme|mutual fund|option|choice)|" +
   "my portfolio|my (existing )?(investment|holdings)|rebalance|asset allocation for me|" +
   "how much should i (invest|put)|suitable for me|right for me|" +
+  // "is the liquid fund safe for me" - adjective separated from the noun.
+  "(good|bad|safe|wise|smart|risky)\\s+(for|to)\\s+(me|invest|buy)|" +
   "buy or sell|switch out of|exit (now|this fund)|hold or (sell|redeem)|" +
   "will (it|this) (go up|grow|fall|crash|double)|predict|forecast|outlook|" +
   "tax saving strategy|save the most tax)\\b", "i");
@@ -192,6 +213,7 @@ const PERFORMANCE = new RegExp(
 
 function guard(q){
   let kind = PII_WORDS.test(q) ? "personal identifiers" : null;
+  if (!kind && PII_LABELLED_NUMBER.test(q)) kind = "bank or folio number";
   if (!kind) for (const [label, re] of PII) if (re.test(q)) { kind = label; break; }
   if (kind) return {
     kind: "pii",
@@ -309,6 +331,17 @@ function ask(question){
   if (held) return {
     kind: "refusal:" + held.kind, text: held.text,
     source_title: held.link[0], source_url: held.link[1]
+  };
+
+  // A question about another fund house reads as in-domain but is out of
+  // scope, and scores too high for any floor to catch. Settle it before
+  // retrieval, exactly as ppfaq/assistant.py does.
+  const house = otherAmc(q);
+  if (house) return {
+    kind: "no_answer",
+    text: "I don't cover " + house + " funds. My sources are the public documents " +
+          "for five PPFAS schemes: " + schemeNames().join(", ") + ".",
+    source_title: LINKS.scope[0], source_url: LINKS.scope[1]
   };
 
   const detected = detectSchemes(q);

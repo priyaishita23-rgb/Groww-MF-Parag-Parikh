@@ -55,6 +55,13 @@ QUESTIONS = [
     "What is the capital of France?",
     "who won the world cup",
     "compare expense ratio of flexi cap and elss",
+    # Added with the Phase 6 guards. Without these the parity check passed
+    # 40/40 while the hosted page was missing three guards the Python service
+    # had gained - the set has to exercise a guard for parity to mean anything.
+    "lock-in for the ICICI ELSS fund",
+    "expense ratio of the HDFC Small Cap Fund",
+    "my folio number is 12345678",
+    "is the liquid fund safe for me",
 ]
 
 
