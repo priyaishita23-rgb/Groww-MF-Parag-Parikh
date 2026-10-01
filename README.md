@@ -11,23 +11,6 @@ Hosted prototype: <https://claude.ai/artifact/4u2R4F9wcFckrcLiLCSnpe>
 
 ---
 
-## Two projects in this repository
-
-| Directory | Project |
-|---|---|
-| **root** | **MF Facts Desk** — the milestone deliverable, described in this README. A facts-only RAG FAQ assistant over PPFAS scheme documents |
-| [`support-assistant/`](support-assistant/) | **Support Assistant** — a separate prototype: an interactive customer-support chat widget for an investing app, with mock domain tools and compliance guardrails |
-
-They share a theme but nothing else — different corpora, different stacks, separate
-test suites, no shared code. The milestone work is everything at the root; read
-[`support-assistant/README.md`](support-assistant/README.md) for the other one.
-
-```bash
-cd support-assistant && pip install -r requirements.txt
-python -m uvicorn app.main:app --port 8080
-```
-
----
 
 ## Scope
 
